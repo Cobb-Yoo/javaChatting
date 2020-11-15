@@ -1,5 +1,10 @@
-package asdasd;
+package lecture_9;
 
+//Step 4
+//클라이언트 간의 채팅에서 특정 클라이언트와의 귓속말 구현
+//다음의 형식으로 귓속말 전송
+///w 상대방아이디 대화말
+//package Client;
 import java.io.*;
 import java.net.*;
 import java.util.*;
@@ -50,7 +55,7 @@ public class ChatWhisperC extends Frame implements ActionListener, KeyListener {
 		loglbl = new Label("로그온");
 		loginb = new Button("ON");
 		ltext = new TextField(30); 
-		loginb.addActionListener(this); 
+		loginb.addActionListener(this);
 		plabel.add(loglbl, BorderLayout.WEST);
 		plabel.add(ltext, BorderLayout.CENTER);
 		plabel.add(loginb, BorderLayout.EAST);
@@ -94,9 +99,9 @@ public class ChatWhisperC extends Frame implements ActionListener, KeyListener {
 					clientdata.append(ID);
 					output.write(clientdata.toString() + "\r\n");
 					output.flush();
-					while (check)
-						;
-					if (serverdata.compareTo("(에러)중복된 ID") == 0) {
+					
+					while (check);
+					if (serverdata == "중복된 ID") {
 						mlbl.setText("중복된 ID 입니다. 다시 입력해주세요.");
 						ltext.setText("");
 						check = true;
@@ -119,6 +124,8 @@ public class ChatWhisperC extends Frame implements ActionListener, KeyListener {
 				clientdata.append(ID);
 				output.write(clientdata.toString() + "\r\n");
 				output.flush();
+				mlbl.setText("접속 완료 사용할 아이디를 입력하세요.");
+				display.setText("");
 				wtext.setText("");
 				ltext.setText("");
 				ltext.setVisible(true);
@@ -162,7 +169,7 @@ public class ChatWhisperC extends Frame implements ActionListener, KeyListener {
 			} else {
 				try {
 					if (st.nextToken().equals("/w")) {
-						message = message.substring(3);
+						message = message.substring(3); 
 						String WID = st.nextToken();
 						String Wmessage = st.nextToken();
 						while (st.hasMoreTokens()) {

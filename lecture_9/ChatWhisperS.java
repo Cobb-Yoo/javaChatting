@@ -1,4 +1,4 @@
-package asdasd;
+package lecture_9;
 
 import java.io.*;
 import java.net.*;
@@ -133,7 +133,7 @@ class ServerThread extends Thread {
 							if (cs.list.get(i).getKey().getName()
 									.compareTo(cs.hash.get(this.toString()).getName()) == 0) {
 								ServerThread SThread1 = (ServerThread) cs.list.get(i).getKey();
-								SThread1.output.write("(에러)중복된 ID\r\n");
+								SThread1.output.write("중복된 ID\r\n");
 								SThread1.output.flush();
 								display.append("중복된 " + ID + "입니다.\r\n");
 							}
